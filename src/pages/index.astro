@@ -1,0 +1,11 @@
+---
+import ReactRAF from "@components/snippets/ReactAnimationFrame";
+import { default as Layout } from "../layouts/Main.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="max-w-2xl mx-auto">
+    <h1 class="font-black text-2xl">Andy Stewart</h1>
+    <ReactRAF client:only="react" />
+  </main>
+</Layout>

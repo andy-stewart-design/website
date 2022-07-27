@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Andy Sans";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/AeonikPro-Roman-VF.woff2") format("woff2-variations"),
+    url("/fonts/AeonikPro-Roman-VF.woff2") format("woff2"),
+    url("/fonts/AeonikPro-Roman-VF.ttf") format("truetype-variations");
+}
+@font-face {
+  font-family: "Andy Mono";
+  src: url("/fonts/AeonikFono-Regular.woff2") format("woff2"),
+    url("/fonts/AeonikFono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
