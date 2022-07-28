@@ -1,0 +1,67 @@
+---
+title: "Request Animation Frame Hook"
+summary: "Create looping animations in React."
+framework: "React"
+
+setup: |
+  import ReactRAF from '@components/snippets/ReactAnimationFrame.tsx';
+---
+
+A react hook for levaraging the Request Animation Frame API to create looping animations, complete with the ability to control playback.
+
+```ts title="useAnimationFrame.ts"
+import { useRef, useLayoutEffect } from "react";
+// The hook accepts two paramters: a callback function that defines the
+// animation and a boolean that dictates if the animation should autoplay
+export default function useAnimationFrame(
+  callback: () => void,
+  shouldAnimate: boolean = true
+) => {
+  // create a stable reference for the animation frame so that we can cancle it later
+  const frame = useRef<number>(0);
+  // the function that help us to create a loop for animation
+  const animate = () => {
+    callback();
+    frame.current = requestAnimationFrame(animate);
+  };
+  // create a side effect that will fire **before** the browser is painted
+  useLayoutEffect(() => {
+    // controls whether the animation should play automatically
+    if (shouldAnimate) {
+      frame.current = requestAnimationFrame(animate);
+    }
+    // cancle the animation frame request when the component is unmounted/re-rendered
+    return () => {
+      frame.current && cancelAnimationFrame(frame.current);
+    };
+  }, [shouldAnimate, callback]);
+};
+```
+
+## In Use
+
+This hooks only requires a single prop: a callback function, which will be fired at approximately 60 frames per second to allow us to create buttery smooth animations. Most often, I use the callback function to increment a `time` variable, which I then use to animate elements in the DOM.
+
+By default, the hook will initialize the request animation frame loop (and consequently, begin the animation) when the component is mounted. However, you can pass a second, optional prop to the hook to defer playback (perhaps until the user clicks a button, or the comonent is visible in the viewport).
+
+I use this hook most often when working with HTML canvas for more complex animations. It's designed to be generic though, so you can easily use it to animate SVGs or CSS properties as well (as in the sample below).
+
+<ReactRAF client:only="react" />
+
+```tsx title="ReactAnimationFrame.tsx"
+const Animation = () => {
+  import { useState } from "react";
+  import useAnimationFrame from "lib/useAnimationFrame";
+
+  const [count, setCount] = useState<number>(0);
+  const update = () => setCount(count + 0.05);
+
+  useAnimationFrame(update, isAnimating);
+
+  return (
+    <div>
+      <h1>{Math.floor(count)}</h1>
+    </div>
+  );
+};
+```

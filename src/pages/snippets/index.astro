@@ -1,0 +1,30 @@
+---
+import { default as Layout } from "src/layouts/Main.astro";
+import SnipPreview from "@components/snippets/SnipPreview.svelte";
+
+interface Frontmatter {
+  title: string;
+  summary: string;
+  framework: string;
+}
+
+const posts = await Astro.glob<Frontmatter>("../../content/snippets/*.md");
+
+const matter = posts.map((post) => {
+  const { frontmatter } = post;
+
+  // regex to select everything before/including `content/`
+  const slug = post.file.replace(/^.+content/, "").replace(".md", "");
+  return { ...frontmatter, slug };
+});
+---
+
+<Layout>
+  <main class="pt-24">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-black text-5xl mb-6">Snippets</h1>
+
+      {matter.map((snippet) => <SnipPreview snippet={snippet} />)}
+    </div>
+  </main>
+</Layout>

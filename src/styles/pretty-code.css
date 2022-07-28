@@ -1,8 +1,20 @@
-/* Code block e.g. 
- * ```js
- *   const a = 1;
- * ```
- */
+/* multiple theme support */
+@media (prefers-color-scheme: dark) {
+  pre[data-theme="light"],
+  code[data-theme="light"],
+  div[data-rehype-pretty-code-title][data-theme="light"] {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  pre[data-theme="dark"],
+  code[data-theme="dark"],
+  div[data-rehype-pretty-code-title][data-theme="dark"] {
+    display: none;
+  }
+}
+
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
   @apply my-8 rounded-xl bg-white/30 dark:bg-gray-900/40 border border-gray-900/10 dark:border-gray-100/10 leading-6 lg:-mx-12;

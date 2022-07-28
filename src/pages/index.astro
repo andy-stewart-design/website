@@ -3,9 +3,10 @@ import ReactRAF from "@components/snippets/ReactAnimationFrame";
 import { default as Layout } from "../layouts/Main.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="max-w-2xl mx-auto">
-    <h1 class="font-black text-2xl">Andy Stewart</h1>
-    <ReactRAF client:only="react" />
+<Layout>
+  <main>
+    <section class="flex justify-center items-center min-h-screen w-screen">
+      <h1 class="font-black text-4xl md:text-6xl">Andy Stewart Design</h1>
+    </section>
   </main>
 </Layout>
