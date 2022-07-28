@@ -32,7 +32,11 @@ div[data-rehype-pretty-code-fragment] code {
 
 /* Code block titles */
 div[data-rehype-pretty-code-title] {
-  @apply mb-0.5 rounded-t-md px-3 py-2 font-mono text-xs text-white/70 border-b border-white/10 shadow-sm;
+  @apply mb-0.5 rounded-t-md px-3 py-2 font-mono text-xs text-gray-900/70 dark:text-white/70 border-b border-gray-900/10 dark:border-gray-100/10 shadow-none;
+}
+
+div[data-rehype-pretty-code-title]:before {
+  content: ">";
 }
 
 /* Lines */

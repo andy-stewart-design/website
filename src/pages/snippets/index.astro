@@ -1,14 +1,11 @@
 ---
 import { default as Layout } from "src/layouts/Main.astro";
 import SnipPreview from "@components/snippets/SnipPreview.svelte";
+import { Snippet } from "src/types/main";
 
-interface Frontmatter {
-  title: string;
-  summary: string;
-  framework: string;
-}
-
-const posts = await Astro.glob<Frontmatter>("../../content/snippets/*.md");
+// Example MDX import
+// https://github.com/withastro/astro/blob/360d5c9bbf4c8b663a73d5537a0ab2ee43ecd8d4/packages/integrations/mdx/test/fixtures/mdx-get-static-paths/src/pages/[slug].astro
+const posts = await Astro.glob<Snippet>("../../content/snippets/*.md");
 
 const matter = posts.map((post) => {
   const { frontmatter } = post;

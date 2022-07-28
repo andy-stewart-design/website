@@ -1,11 +1,5 @@
 <script lang="ts">
-  interface Snippet {
-    title: string;
-    summary: string;
-    framework: string;
-    slug: string;
-  }
-
+  import { Snippet } from "src/types/main";
   export let snippet: Snippet;
 
   const { slug, summary, title } = snippet;

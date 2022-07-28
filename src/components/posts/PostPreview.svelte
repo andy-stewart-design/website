@@ -1,18 +1,7 @@
 <script lang="ts">
-  interface Frontmatter {
-    title: string;
-    date: string;
-    summary: string;
-    image?: string;
-    tags?: string[];
-  }
-
-  interface Post extends Frontmatter {
-    slug: string;
-  }
+  import { Post } from "src/types/main";
 
   export let post: Post;
-
   const { slug, summary, title } = post;
 </script>
 
