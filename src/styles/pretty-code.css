@@ -17,7 +17,7 @@
 
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
-  @apply my-8 rounded-xl bg-white/30 dark:bg-gray-900/40 border border-gray-900/10 dark:border-gray-100/10 leading-6 lg:-mx-12;
+  @apply my-8 rounded-xl bg-white/30 dark:bg-gray-800/40 border border-gray-900/10 dark:border-gray-100/10 leading-6 lg:-mx-12;
 }
 
 div[data-rehype-pretty-code-fragment] pre {
@@ -33,10 +33,6 @@ div[data-rehype-pretty-code-fragment] code {
 /* Code block titles */
 div[data-rehype-pretty-code-title] {
   @apply mb-0.5 rounded-t-md px-3 py-2 font-mono text-xs text-gray-900/70 dark:text-white/70 border-b border-gray-900/10 dark:border-gray-100/10 shadow-none;
-}
-
-div[data-rehype-pretty-code-title]:before {
-  content: ">";
 }
 
 /* Lines */
