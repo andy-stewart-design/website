@@ -17,11 +17,12 @@ const matter = posts.map((post) => {
 ---
 
 <Layout>
-  <main class="pt-24">
+  <main class="py-24">
     <div class="max-w-4xl mx-auto">
-      <h1 class="font-black text-5xl mb-6">Snippets</h1>
-
-      {matter.map((snippet) => <SnipPreview snippet={snippet} />)}
+      <h1 class="font-black text-5xl mb-10">Snippets</h1>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {matter.map((snippet) => <SnipPreview snippet={snippet} />)}
+      </div>
     </div>
   </main>
 </Layout>

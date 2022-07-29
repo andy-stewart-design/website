@@ -1,6 +1,6 @@
 ---
 title: "Request Animation Frame Hook"
-summary: "Create looping animations in React."
+summary: "Create smooth looping animations in React."
 framework: "React"
 
 setup: |
@@ -40,11 +40,11 @@ export default function useAnimationFrame(
 
 ## In Use
 
-This hooks only requires a single prop: a callback function, which will be fired at approximately 60 frames per second to allow us to create buttery smooth animations. Most often, I use the callback function to increment a `time` variable, which I then use to animate elements in the DOM.
+This hooks only requires a single prop: a callback function that will be fired at approximately 60 frames per second, allowing us to create buttery smooth animations. Most often, I use the callback function to increment a `time` variable, which I then use to animate elements in the DOM. (Pro tip: you'll want to increment by a very small number—remember, it's going to happen, ideally, 60 times every second.)
 
-By default, the hook will initialize the request animation frame loop (and consequently, begin the animation) when the component is mounted. However, you can pass a second, optional prop to the hook to defer playback (perhaps until the user clicks a button, or the comonent is visible in the viewport).
+By default, the hook will initialize the request animation frame loop (and consequently, begin the animation) when the component is mounted. However, you can pass a second, optional prop to the hook to defer playback (e.g. until the user clicks a button, or the component is visible in the viewport).
 
-I use this hook most often when working with HTML canvas for more complex animations. It's designed to be generic though, so you can easily use it to animate SVGs or CSS properties as well (as in the sample below).
+I most often use this hook in tandem with an HTML5 canvas to performantly create complex animations. The hook is designed to be generic though, so you can easily use it to animate SVGs or CSS properties as well (as in the example below).
 
 <ReactRAF client:only="react" />
 
