@@ -1,6 +1,8 @@
 ---
-import Nav from "@components/global/Nav.svelte";
 import Body from "@layouts/Body.svelte";
+import Head from "@layouts/Head.svelte";
+import Nav from "@components/global/Nav.svelte";
+import ThemeSelect from "@components/global/ThemeSelect.svelte";
 import "@styles/global.css";
 import "@styles/prose.css";
 import "@styles/pretty-code.css";
@@ -14,50 +16,11 @@ const { title } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{title}</title>
-    <link
-      rel="preload"
-      as="font"
-      href="/fonts/AeonikPro-Roman-VF.woff2"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="preload"
-      as="font"
-      href="/fonts/AeonikFono-Regular.woff2"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <script is:inline>
-      const theme = (() => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-
-      window.localStorage.setItem("theme", theme);
-    </script>
-  </head>
-
+  <Head title={title} />
   <Body>
+    <Nav>
+      <ThemeSelect client:load />
+    </Nav>
     <article class="prose">
       <slot />
     </article>
