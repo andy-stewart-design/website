@@ -7,7 +7,7 @@ framework: "Javascript"
 A vanilla javascript function that will split an HTML text element into individual words and letters that can then be animated using your library of choice.
 
 ```ts title="splitText.ts"
-function deconstructText(node: , elementType: string = "span") {
+function deconstructText => (node: , elementType: string = "span") {
   // bail if there is no text content to manipulate
   if (!node.textContent) return;
   // create a return array that will hold the split letters
