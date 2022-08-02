@@ -19,7 +19,7 @@ const { title } = Astro.props as Props;
   <Head title={title} />
   <Body>
     <Nav>
-      <ThemeSelect client:only="svelte" />
+      <!-- <ThemeSelect client:only="svelte" /> -->
     </Nav>
     <article class="prose">
       <slot />
